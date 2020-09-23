@@ -1,0 +1,10 @@
+развернуть локально простой сервер на Express.js (https://expressjs.com)
+
+TODO:
+
+1) создать package.json (npm init)
+2) установить пакет express.js
+3) создать файл user.json, который будет содержать список юзеров (у каждого юзера должен быть минимум id, email, name, остальные поля по желанию)
+4) с помощью express.js создать сервер, который будет содержать endpoint /user, который на GET вернет список всех пользователей
+5) json файл читать с помощью https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback
+6) установить Postman (https://www.postman.com/) проверить, что запрос работает
