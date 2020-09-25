@@ -1,0 +1,6 @@
+1. prettier;
+2. npm script (npm run);
+2. nodemon;
+3. POST /users/id - add user;
+4. PUT /users/id - edit user;
+5. DELETE /users/id - delete;
