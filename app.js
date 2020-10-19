@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 const fs = require("fs");
 
-app.get("/", (req, res) => {
+app.get("/user", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     if (err) throw err;
     let users = JSON.parse(data);
@@ -31,12 +31,12 @@ app.post("/user", function (req, res) {
 
     //добавить нового юзера в массив
     let newUsers = users.concat(newUser);
-    res.json(newUsers);
     //полученный массив записать в файл
 
-    fs.writeFile("./users.json", (err, data) => {
+    fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
       console.log("The user has been saved!");
+      res.json(newUsers);
     });
   });
 });
@@ -49,11 +49,11 @@ app.delete("/users/:id", (req, res) => {
     var findIt = users.findIndex((item) => item.id === userId);
 
     users.splice(findIt, 1);
-    res.json(users);
 
     fs.writeFile("./users.json", (err, data) => {
       if (err) throw err;
       console.log("The user has been deleted!");
+      res.json(users);
     });
   });
 });
@@ -71,11 +71,10 @@ app.put("/user/:id", function (req, res) {
       return item;
     });
 
-    res.json(newUsers);
-
     fs.writeFile("./users.json", (err, data) => {
       if (err) throw err;
       console.log("The user has been changed!");
+      res.json(newUsers);
     });
   });
 });
