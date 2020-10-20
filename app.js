@@ -17,21 +17,17 @@ app.get("/user/:id", function (req, res) {
 
 app.post("/user", function (req, res) {
   fs.readFile("./users.json", (err, data) => {
-    //получить список пользователей из файла (массив)
     let users = JSON.parse(data);
 
-    //создать объект нового юзера
     const newUser = {
       id: "06",
       "e-mail": "1@gmail.com",
       name: "Ivan",
-      age: "39",
+      age: "34",
       city: "Samara",
     };
 
-    //добавить нового юзера в массив
     let newUsers = users.concat(newUser);
-    //полученный массив записать в файл
 
     fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
@@ -45,12 +41,12 @@ app.delete("/users/:id", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
     const userId = req.params["id"];
-    //удалить
+
     var findIt = users.findIndex((item) => item.id === userId);
 
     users.splice(findIt, 1);
 
-    fs.writeFile("./users.json", (err, data) => {
+    fs.writeFile("./users.json", JSON.stringify(users), (err) => {
       if (err) throw err;
       console.log("The user has been deleted!");
       res.json(users);
@@ -71,7 +67,7 @@ app.put("/user/:id", function (req, res) {
       return item;
     });
 
-    fs.writeFile("./users.json", (err, data) => {
+    fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
       console.log("The user has been changed!");
       res.json(newUsers);

@@ -6,7 +6,6 @@
     "age": "33",
     "city": "London"
   },
-
   {
     "id": "02",
     "e-mail": "12@gmail.com",
@@ -14,7 +13,6 @@
     "age": "20",
     "city": "Moscow"
   },
-
   {
     "id": "03",
     "e-mail": "23@yahoo.com",
@@ -22,18 +20,13 @@
     "age": "62",
     "city": "Oslo"
   },
-
+  { "id": "04", "e-mail": "ret@gmail.com", "name": "Rita", "city": "New York" },
+  { "id": "05", "e-mail": "true@gmail.com", "name": "Nick", "city": "Porto" },
   {
-    "id": "04",
-    "e-mail": "ret@gmail.com",
-    "name": "Rita",
-    "city": "New York"
-  },
-
-  {
-    "id": "05",
-    "e-mail": "true@gmail.com",
-    "name": "Nick",
-    "city": "Porto"
+    "id": "06",
+    "e-mail": "1@gmail.com",
+    "name": "Ivan",
+    "age": "34",
+    "city": "Samara"
   }
 ]
