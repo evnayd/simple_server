@@ -1,0 +1,39 @@
+[
+  {
+    "id": "01",
+    "e-mail": "1@gmail.com",
+    "name": "Herbert",
+    "age": "33",
+    "city": "London"
+  },
+
+  {
+    "id": "02",
+    "e-mail": "12@gmail.com",
+    "name": "Anna",
+    "age": "20",
+    "city": "Moscow"
+  },
+
+  {
+    "id": "03",
+    "e-mail": "23@yahoo.com",
+    "name": "Karl",
+    "age": "62",
+    "city": "Oslo"
+  },
+
+  {
+    "id": "04",
+    "e-mail": "ret@gmail.com",
+    "name": "Rita",
+    "city": "New York"
+  },
+
+  {
+    "id": "05",
+    "e-mail": "true@gmail.com",
+    "name": "Nick",
+    "city": "Porto"
+  }
+]
