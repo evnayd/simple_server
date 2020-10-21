@@ -1,0 +1,4 @@
+1. on post request real data from request body should be added
+2. complete GET /user/:id
+3. on put request user should be updated with data from request body
+4. replace  users.splice(findIt, 1); with users.filter(...)

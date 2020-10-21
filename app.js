@@ -1,7 +1,13 @@
 const express = require("express");
-const app = express();
-const port = 3000;
+const bodyParser = require('body-parser')
 const fs = require("fs");
+
+const port = 3000;
+
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.get("/user", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
@@ -13,11 +19,15 @@ app.get("/user", (req, res) => {
 
 app.get("/user/:id", function (req, res) {
   res.send("user " + req.params.id);
+  //let's send back a user with id===req.params.id
 });
 
 app.post("/user", function (req, res) {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
+
+    //get new user info from request and replace static newUser variable
+    console.log(req.body)
 
     const newUser = {
       id: "06",
