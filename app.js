@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 const fs = require("fs");
 
 const port = 3000;
@@ -7,7 +7,6 @@ const port = 3000;
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.get("/user", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
@@ -27,15 +26,16 @@ app.post("/user", function (req, res) {
     let users = JSON.parse(data);
 
     //get new user info from request and replace static newUser variable
-    console.log(req.body)
+    const newUser = req.params["body"];
+    console.log(req.body);
 
-    const newUser = {
+    /*const newUser = {
       id: "06",
       "e-mail": "1@gmail.com",
       name: "Ivan",
       age: "34",
       city: "Samara",
-    };
+    };*/
 
     let newUsers = users.concat(newUser);
 
@@ -51,15 +51,12 @@ app.delete("/users/:id", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
     const userId = req.params["id"];
+    var newUsers = users.filter((item) => item.id !== userId);
 
-    var findIt = users.findIndex((item) => item.id === userId);
-
-    users.splice(findIt, 1);
-
-    fs.writeFile("./users.json", JSON.stringify(users), (err) => {
+    fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
       console.log("The user has been deleted!");
-      res.json(users);
+      res.json(newUsers);
     });
   });
 });
