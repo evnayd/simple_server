@@ -17,8 +17,10 @@ app.get("/user", (req, res) => {
 });
 
 app.get("/user/:id", function (req, res) {
-  res.send("user " + req.params.id);
+  //res.send("user " + req.params.id);
   //let's send back a user with id===req.params.id
+  let id = req.params.id;
+  res.send("user " + id);
 });
 
 app.post("/user", function (req, res) {
@@ -27,7 +29,7 @@ app.post("/user", function (req, res) {
 
     //get new user info from request and replace static newUser variable
     const newUser = req.params["body"];
-    console.log(req.body);
+    //console.log(req.body);
 
     /*const newUser = {
       id: "06",
@@ -47,29 +49,29 @@ app.post("/user", function (req, res) {
   });
 });
 
-app.delete("/users/:id", (req, res) => {
+/*app.delete("/users/:id", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
     const userId = req.params["id"];
     var newUsers = users.filter((item) => item.id !== userId);
-
     fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
       console.log("The user has been deleted!");
       res.json(newUsers);
     });
   });
-});
+});*/
 
+//on put request user should be updated with data from request body
 app.put("/user/:id", function (req, res) {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
 
     const userId = req.params["id"];
-
+    const userName = req.params["body"];
     var newUsers = users.map((item) => {
       if (item.id === userId) {
-        item.name = "Elena";
+        item.name == userName;
       }
       return item;
     });
