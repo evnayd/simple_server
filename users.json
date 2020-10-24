@@ -105,5 +105,26 @@
     "name": "Ivan",
     "age": "34",
     "city": "Samara"
+  },
+  {
+    "id": "10",
+    "e-mail": "1@gmail.com",
+    "name": "Herbert",
+    "age": "39",
+    "city": "London"
+  },
+  {
+    "id": "10",
+    "e-mail": "1@gmail.com",
+    "name": "Herbert",
+    "age": "39",
+    "city": "London"
+  },
+  {
+    "id": "12",
+    "e-mail": "1@gmail.com",
+    "name": "Eva",
+    "age": "39",
+    "city": "Saint-Petersburg"
   }
 ]

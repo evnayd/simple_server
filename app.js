@@ -26,18 +26,8 @@ app.get("/user/:id", function (req, res) {
 app.post("/user", function (req, res) {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
-
-    //get new user info from request and replace static newUser variable
-    const newUser = req.params["body"];
-    //console.log(req.body);
-
-    /*const newUser = {
-      id: "06",
-      "e-mail": "1@gmail.com",
-      name: "Ivan",
-      age: "34",
-      city: "Samara",
-    };*/
+    const newUser = req.body;
+    console.log(req.body);
 
     let newUsers = users.concat(newUser);
 
@@ -48,19 +38,21 @@ app.post("/user", function (req, res) {
     });
   });
 });
-
-/*app.delete("/users/:id", (req, res) => {
+app.delete("/users/:id", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
     const userId = req.params["id"];
+    //const userId = req.params.id;
+    console.log(userId);
     var newUsers = users.filter((item) => item.id !== userId);
+    console.log(newUsers);
     fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
       console.log("The user has been deleted!");
       res.json(newUsers);
     });
   });
-});*/
+});
 
 //on put request user should be updated with data from request body
 app.put("/user/:id", function (req, res) {
