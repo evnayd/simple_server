@@ -42,8 +42,7 @@ app.delete("/users/:id", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
     const userId = req.params["id"];
-    //const userId = req.params.id;
-    console.log(userId);
+
     var newUsers = users.filter((item) => item.id !== userId);
     console.log(newUsers);
     fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
@@ -54,19 +53,22 @@ app.delete("/users/:id", (req, res) => {
   });
 });
 
-//on put request user should be updated with data from request body
 app.put("/user/:id", function (req, res) {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
 
-    const userId = req.params["id"];
-    const userName = req.params["body"];
+    let userId = req.params.id;
+    console.log(userId);
+    let userName = req.body["name"];
+    console.log(userName);
     var newUsers = users.map((item) => {
       if (item.id === userId) {
-        item.name == userName;
+        item.name = userName;
       }
       return item;
     });
+
+    console.log(newUsers);
 
     fs.writeFile("./users.json", JSON.stringify(newUsers), (err) => {
       if (err) throw err;
