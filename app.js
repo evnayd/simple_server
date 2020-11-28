@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/', express.static('public'))
 
 app.get("/user", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
