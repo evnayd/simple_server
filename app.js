@@ -8,7 +8,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/user", (req, res) => {
+app.use('/', express.static('public'))
+
+app.get("/users", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     if (err) throw err;
     let users = JSON.parse(data);
@@ -16,14 +18,14 @@ app.get("/user", (req, res) => {
   });
 });
 
-app.get("/user/:id", function (req, res) {
+app.get("/users/:id", function (req, res) {
   //res.send("user " + req.params.id);
   //let's send back a user with id===req.params.id
   let id = req.params.id;
   res.send("user " + id);
 });
 
-app.post("/user", function (req, res) {
+app.post("/users", function (req, res) {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
     const newUser = req.body;
@@ -38,6 +40,7 @@ app.post("/user", function (req, res) {
     });
   });
 });
+
 app.delete("/users/:id", (req, res) => {
   fs.readFile("./users.json", (err, data) => {
     let users = JSON.parse(data);
